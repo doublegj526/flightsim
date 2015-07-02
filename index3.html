@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hi there</title>
+</head>
+<body>
+<script>
+function counter() {
+    var i = 0;
+    var funcNameHere = function(){
+        if (i == 100) clearInterval(this);
+        else 
+        	{
+        		document.write(i++ + '<br>');
+        	}
+    };
+    // This block will be executed 100 times.
+    setInterval(funcNameHere, 100);
+    funcNameHere();
+} // End
+counter();
+</script>
+</body>
+</html>
