@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+ <generic>
+
+  <output>
+   <line_separator>newline</line_separator>
+   <var_separator>:</var_separator>
+
+   <chunk>
+    <name>latitude</name>
+    <type>float</type>
+    <format>%.10f</format>
+    <node>/position/latitude-deg</node>
+   </chunk>
+
+   <chunk>
+    <name>longitude</name>
+    <type>float</type>
+    <format>%.10f</format>
+    <node>/position/longitude-deg</node>
+   </chunk>
+
+   <chunk>
+   		<name>Heading</name>
+        <node>/orientation/heading-deg</node>
+        <type>float</type>
+        <format>%03.3f</format>
+    </chunk>
+    <chunk>
+        <name>speed</name>
+        <format>V=%d</format>
+        <node>/velocities/airspeed-kt</node>
+    </chunk>
+
+
+ </output>
+
+ </generic>
+
+</PropertyList>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flight Simulator User Interface</title>
+    <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+    <link href = "css/bootstrap.min.css" rel = "stylesheet">
+  </head>
+  <body>
+    <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src = "js/bootstrap.js"></script>
+     <div class = "navbar navbar-default navbar-fixed-top">
+      <div class = "container">
+        <a href = "#" class = "navbar-brand">
+          FlightGear User Interface
+        </a>
+        <button class = "navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
+          <span class = "icon-bar"></span>
+          <span class = "icon-bar"></span>
+          <span class = "icon-bar"></span>
+        </button>
+        <div class = "collapse navbar-collapse navHeaderCollapse">
+          <ul class = "nav navbar-nav navbar-right">
+            <li class = "active"><a href = "index.html">Home</a></li>
+            <li><a href = "map.html">Map View</a></li>
+            <li class = "dropdown">
+              <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Logging<b class = "caret"></b></a>
+              <ul class = "dropdown-menu">
+                <li><a href = "#">Velocity</a></li>
+                <li><a href = "#">Acceleration</a></li>
+                <li><a href = "#">Altitude</a></li>
+              </ul>
+            </li>
+            <li><a href = "instructions.html">Instructions</a></li>
+            <li><a href = "#contact" data-toggle="modal">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container bs-docs-container">
+      ::before
+        <div class="row">
+        ::before
+        <div class="col-md-12" role="main">
+          <div class="bs-docs-section">
+            <h1 id="instructions" class="page-header">
+              Instructions
+            </h1>
+            <p class="lead">
+            Welcome to the FlightGear flight simulator user interface! If this is your first time, here are some very simple instructions to help you get started. Note that the instructions below are geared towards Mac OS users, though the installation and setup for Windows and Linux users should be similar.
+            </p>
+            <h3 id="getting started">
+              Getting Started
+            </h3>
+            <ol>
+              <li>Download and install FlightGear. The instructions for doing that can be found
+              <a href = "http://www.flightgear.org/download/">here</a>. 
+              </li>
+              <li>
+              Download the xml file 
+              <a href="userinterface.xml" download="userinterface.xml">here</a>. This will be used for logging your flight dynamics simulation data. 
+              </li>
+              <li>
+              Navigate to <strong>Applications</strong>. This can be found by opening <strong>Finder</strong> and looking on the left panel. Alternatively, this can be done by opening a Terminal window and entering the following command:
+              <div class="col-xs-12" style="height:10px;"></div>
+              <div class="bootstrap-demo">
+                <pre><p>> cd ~/../../Applications</p></pre>
+              </div>
+              </li>
+              <li>
+              Now find <strong>FlightGear.app</strong>. Instead of double clicking on it to get it started, right click and select <strong>Show Package Contents</strong>.
+              </li>
+              <li>
+              Now navigate to <strong>Contents > Resources > data > Protocol</strong>. Once again, this can alternatively be done by entering the following command in Terminal:
+              <div class="col-xs-12" style="height:10px;"></div>
+              <div class="bootstrap-demo">
+                <pre><p>> cd ~/../../Applications/FlightGear.app/Contents/Resources/data/Protocol</p></pre>
+              </div>
+              </li>
+              <li>
+              Copy and paste the xml file to this directory.
+              </li>
+            </ol>
+            <h3 id="how to use">
+              How to Use the Flight Simulator User Interface
+            </h3>
+            
+            <ol>
+              <li>
+                Find your computer's public IP Address. This can be done by a simple <a href = "http://lmgtfy.com/?q=ip+address">Google search</a>.
+              </li>
+              <li>
+                Go back to the <strong>FlightGear.app</strong> directory mentioned in the <em>Getting Started</em> section. Now navigate to <strong>Contents > MacOS</strong>. This should be done in Terminal by entering the following command:
+              <div class="col-xs-12" style="height:10px;"></div>
+              <div class="bootstrap-demo">
+                <pre><p>> cd ~/../../Applications/FlightGear.app/Contents/MacOS</p></pre>
+              </div>
+              </li>
+              <li>
+                Now enter the following command:
+                <div class="col-xs-12" style="height:10px;"></div>
+                <div class="bootstrap-demo">
+                <pre><p>> ./fgfs --generic=socket,out,5,my_public_ip_address,9999,udp,userinterface</p></pre>
+              </div>
+                where you will enter your public IP address into the my_public_ip_address space. This should start up FlightGear.
+              </li>
+              <li>
+                There should be a file labeled <strong>udppacket.py</strong> in the same directory as your user interface. Open up this file in any sort of text editing software, and make the following edit to the fifth line:
+                <div class="col-xs-12" style="height:10px;"></div>
+                <div class="bootstrap-demo">
+                <pre><p>UDP_IP = #my_public_ip_address</p></pre>
+              </div>
+               by replacing <strong>#my_public_ip_address</strong> with your public IP Address.
+              </li>
+              <li>
+                Open Terminal and navigate to the directory containing <strong>updpacket.py</strong>, and enter the command
+                <div class="col-xs-12" style="height:10px;"></div>
+                <div class="bootstrap-demo">
+                <pre><p>> python udppacket.py</p></pre>
+                </div>
+                This script will be responsible for logging the flight dynamics data.
+              </li>
+              <li>
+                Congratulations! You are done! You can now use the user interface to retrieve your logging data or to view your live map. In the case that your live map does not appear and you are using Google Chrome, open a Terminal window and navigate to the executable version of Chrome:
+                <div class="col-xs-12" style="height:10px;"></div>
+                <div class="bootstrap-demo">
+                <pre><p>> cd ~/../../Applications/'Google Chrome.app'/Contents/MacOS</p></pre>
+                </div>
+                Now allow local file access by making the following command:
+                <div class="col-xs-12" style="height:10px;"></div>
+                <div class="bootstrap-demo">
+                <pre><p>> ./'Google Chrome' --allow-file-access-from-files</p></pre>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class = "navbar navbar-default navbar-fixed-bottom">
+      <div class = "container">
+        <p class = "navbar-text pull-left">Site built by John Gee</p>
+        <a href = "#" class = "navbar-btn btn-danger btn pull-right">Subscribe on YouTube</a>
+      </div>
+    </div>
+    <div class="col-xs-12" style="height:50px;"></div>
+    <div class = "modal fade" id = "contact" role = "dialog">
+      <div class = "modal-dialog">
+        <div class = "modal-content">
+          <form class = "form-horizontal">
+            <div class = "modal-header">
+              <h4>Contact Us</h4>
+            </div>
+            <div class = "modal-body">
+              <div class = "form-group">
+                <label for = "name" class = "col-lg-3 control-label">Name:</label>
+                <div class = "col-lg-9">
+                  <input type = "text" class = "form-control" id = "name" placeholder = "John Smith">
+                </div> 
+              </div>
+              <div class = "form-group">
+                <label for = "email" class = "col-lg-3 control-label">Email:</label>
+                <div class = "col-lg-9">
+                  <input type = "text" class = "form-control" id = "email" placeholder = "johnsmith@example.com">
+                </div> 
+              </div>
+              <div class = "form-group">
+                <label for = "message" class = "col-lg-3 control-label">Message:</label>
+                <div class = "col-lg-9">
+                  <textarea class = "form-control" rows = "8" placeholder = "Blah blah blah."></textarea>
+                </div> 
+              </div>
+            </div>
+            <div class = "modal-footer">
+              <a class = "btn btn-default" data-dismiss = "modal">Close</a>
+              <button class = "btn btn-primary">Send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
